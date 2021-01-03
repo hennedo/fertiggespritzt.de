@@ -1,0 +1,7 @@
+.idea/
+.DS_Store
+start
+modd.conf
+pkged.go
+dist/
+node_modules/
