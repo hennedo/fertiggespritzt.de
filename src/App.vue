@@ -11,7 +11,7 @@
       <footer>
         *: Bei gleicher Anzahl verabreichter Dosen pro Tag, wobei zu erwarten ist, dass es mehr werden.<br />
         Quelle: <a href="https://rki-vaccination-data.vercel.app/" target="_blank">https://rki-vaccination-data.vercel.app/</a> auf Basis der Daten vom RKI<br/>
-        Der Quellcode ist auf <a href="https://www.github.com/hennedo/wielangebiswirallegeimpftsind.de">Github</a> zu finden
+        Der Quellcode ist auf <a href="https://www.github.com/hennedo/fertiggespritzt.de">Github</a> zu finden
       </footer>
     </div>
   </div>
