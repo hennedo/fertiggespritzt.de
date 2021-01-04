@@ -10,6 +10,8 @@
       </div>
       <footer>
         *: Bei gleicher Anzahl verabreichter Dosen pro Tag, wobei zu erwarten ist, dass es mehr werden.<br />
+        Das RKI gibt an "Anmerkung zu den Indikationen: Es können mehrere Indikationen je geimpfter Person vorliegen."<br />
+        Jede Person muss zweimal geimpft werden um den vollständigen Schutz zu haben. Ich kann leider derzeit noch nicht aus der Datenquelle erfahren, ob die zweite Dosis die Anzahl der geimpften Personen erhöht. Details zu meiner Berechnung sind auf <a href="https://www.github.com/hennedo/fertiggespritzt.de">Github</a> zu finden
         Quelle: <a href="https://rki-vaccination-data.vercel.app/" target="_blank">https://rki-vaccination-data.vercel.app/</a> auf Basis der Daten vom RKI<br/>
         Der Quellcode ist auf <a href="https://www.github.com/hennedo/fertiggespritzt.de">Github</a> zu finden
       </footer>
@@ -28,7 +30,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("/api").then(data => {
+    axios.get("https://rki-vaccination-data.vercel.app/api").then(data => {
       let impfStart = new Date("2020-12-27T00:00:00")
       let lastUpdateDate = new Date(data.data.lastUpdate)
       let diffDays = Math.round((lastUpdateDate.getTime() - impfStart.getTime()) / (1000*3600*24))
@@ -99,7 +101,7 @@ export default {
       font-size: 95px;
     }
     footer {
-      font-size: 20px;
+      font-size: 17px;
     }
   }
 </style>
