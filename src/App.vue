@@ -1,21 +1,23 @@
 <template>
-  <div id="app">
-    <div class="background">
-    </div>
-    <div class="container">
-      <div class="data">
+  <div id="app" class="container">
+    <main id="main">
+      <h1 class="data">
         Es dauert bei aktueller Geschwindigkeit noch*<br />
-        <b><span if="yearsRemaining">{{yearsRemaining}} Jahre und </span>{{daysRemaining}} Tage</b><br />
+        <strong><span if="yearsRemaining">{{yearsRemaining}} Jahre und </span>{{daysRemaining}} Tage</strong><br />
         bis alle Menschen in Deutschland gegen COVID-19 geimpft sind.
-      </div>
-      <footer>
+      </h1>
+    </main>
+    <aside class="footer">
+      <p>
         *: Bei gleicher Anzahl verabreichter Dosen pro Tag, wobei zu erwarten ist, dass es mehr werden.<br />
         Das RKI gibt an "Anmerkung zu den Indikationen: Es können mehrere Indikationen je geimpfter Person vorliegen."<br />
         Jede Person muss zweimal geimpft werden um den vollständigen Schutz zu haben. Ich kann leider derzeit noch nicht aus der Datenquelle erfahren, ob die zweite Dosis die Anzahl der geimpften Personen erhöht. Details zu meiner Berechnung sind auf <a href="https://www.github.com/hennedo/fertiggespritzt.de">Github</a> zu finden
-        Quelle: <a href="https://rki-vaccination-data.vercel.app/" target="_blank">https://rki-vaccination-data.vercel.app/</a> auf Basis der Daten vom RKI<br/>
+        Quelle: <a href="https://rki-vaccination-data.vercel.app/" target="_blank">https://rki-vaccination-data.vercel.app/</a> auf Basis der Daten vom RKI
+      </p>
+      <p>
         Der Quellcode ist auf <a href="https://www.github.com/hennedo/fertiggespritzt.de">Github</a> zu finden
-      </footer>
-    </div>
+      </p>
+    </aside>
   </div>
 </template>
 
@@ -45,13 +47,21 @@ export default {
 </script>
 
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   html, body {
-    width: 100vw;
-    height: 100vh;
     padding: 0;
     margin: 0
   }
-  .background {
+
+  body {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #eeeeee;
+
     background-image: linear-gradient(
             rgba(0, 0, 0, 0.7),
             rgba(0, 0, 0, 0.7)
@@ -59,49 +69,53 @@ export default {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left:0;
-    top: 0;
-    z-index: -1;
+
+    line-height: 1.5;
   }
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #eeeeee;
-    padding: 0 30px;
-    font-size: 28px;
-  }
+
   .container {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
+
+    max-width: 75rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
   }
-  b {
-    font-size: 35px;
+
+  #main {
+    margin: auto;
   }
-  a:link, a:visited, a:hover, a:focus {
+
+  h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 1.75rem;
+    font-size: clamp(1.75rem, 6vw, 4.5rem);
+    font-weight: normal;
+    line-height: 1.3;
+  }
+
+  h1 strong {
+    font-size: 1.375em;
+  }
+
+  a:link, a:visited {
     text-decoration: none;
     color: #888888;
   }
-  footer {
-    font-size: 13px;
-    padding-top: 100px;
-    align-self: last baseline;
+  a:hover {
+    text-decoration: underline;
   }
-  @media (min-width: 1080px) {
-    #app {
-      font-size: 70px;
-    }
-    b {
-      font-size: 95px;
-    }
-    footer {
-      font-size: 17px;
-    }
+  a:focus {
+    text-decoration: underline;
+    color: #f00;
+    outline: none;
   }
+
+  .footer {
+    padding-top: 2rem;
+  }
+
 </style>
