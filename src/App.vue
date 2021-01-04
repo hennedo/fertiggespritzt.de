@@ -94,7 +94,11 @@ export default {
     font-size: 1.75rem;
     font-size: clamp(1.75rem, 6vw, 4.5rem);
     font-weight: normal;
-    line-height: 1.1;
+    line-height: 1.3;
+  }
+
+  h1 strong {
+    font-size: 1.375em;
   }
 
   a:link, a:visited {
