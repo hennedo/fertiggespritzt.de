@@ -1,41 +1,47 @@
-# Wie lange dauert's noch bis alle in Deutschland geimpft sind?
-Eine (aktuell) sehr winzige Website mit einem Counter, wie lange wir noch brauchen bis 100% der Deutschen geimpft sind.
-Natürlich ist es utopisch vorrauszusetzen das 100% geimpft werden. Aber ich finde, es ist dennoch eine interessante Zahl.
+# Statische version von fertiggespritzt.de
 
-In Zukunft wird unter anderem noch ein Graph eingebaut wie sich die Geschwindigkeit pro Tag ändert, gegebenenfalls gibts noch informationen zur Herdenimmunität usw. Pull requests sind Willkommen!
+## Inhalt
+1. Warum?
+2. Wie?
+3. Neue features (+Begründung)
+4. Dev/Deploy
+5. Zukunft
 
-### Aktuelle Problematik bei der Datenbasis
-Das RKI gibt an "Anmerkung zu den Indikationen: Es können mehrere Indikationen je geimpfter Person vorliegen."
-Jede Person muss zweimal geimpft werden um den vollständigen Schutz zu haben. Ich kann leider derzeit noch nicht aus der Datenquelle erfahren, ob die zweite Dosis die Anzahl der geimpften Personen erhöht.
-Da leider aufgrund der Auslastung des RKI's derzeit keine Bürgerfragen beantwortet werden, würde ich mich freuen wenn jemand mit journalistischem Hintergrund ebenfalls Interesse an der Klärung dieser Frage hat. Als Pressevertreter kann man weiterhin unter
+---
+# 1. Warum?
+Das Ziel dieses Forks ist es, Vue im Frontend durch
+EJS im backend zu ersetzen und so die Seite auch für Personen verfügbar zu
+machen welche kein JS ausführen möchten. Das nutzen von Server-rendering
+hat noch weitere Forteile:
+1. (De)Bloat: VueJs wurde (zum Fork-Zeitpunkt) zum ersetzen von **2** variablen genutzt
+2. Latency: Menschen mit schlechtem Netz (wilkommen in Deutschland!) müssen zunächst auf den durch ihr netz sehr langsamen API-call warten.
+3. Caching (TBD) und API-traffic: Da die Daten sich nur wenig ändern könnten sie mehrfach verwendet werden und so die API last verringern.
+4. Artikel und weitere Features (siehe \#4 und \#5) sind leichter realisiserbar (oder könen dynamische Fallbacks erhalten)
 
-rki.de/DE/Service/Kontakt/Anfragen/Anfragen_node.html
+# 2. Wie?
+Dieser Fork ist eine theoretisch 'fertige' Version des gennanten Framework-wechsels (siehe \#3).
 
-Anfragen an das RKI stellen.
+# 3. Neues:
+* Dieser Server rendert Markdown-dateien aus */artikel' ohne dabei Client-seitiges JS zu bemühen.
+* **Hier könnte ihr Feature stehen :)**
 
-## Art der Berechnung
-Als Datenbasis liegt die folgende API zugrunde
+# 4. Deploy
+Am Deployment hat sich durch diesen Fork nichts geändert:
 
-https://github.com/ThisIsBenny/rki-vaccination-data
 
-Auch ein Open Source Projekt und dort werden die vom RKI veröffentlichte Tabelle zu geimpften Personen und die Statistischen Ämter für die Anzahl der Einwohner zugrunde gelegt.
-
-Die Berechnung der Dauer bis theoretisch alle Menschen in Deutschland geimpft sind mache ich wie folgt:
-
-```
-Quote = Geimpfte Personen / Gesamteinwohner
-VerbleibendeTage = (TageImpfbeginnBisLetztesUpdate / Quote * 100) - TageSeitImpfbeginn
-``` 
-
-## Mithelfen
-Ich bin selbst kein Virologe und kann mich nur auf Daten beziehen die ich aus öffentlichen Quellen bekommen kann. Mich würde aber freuen, wenn nach und nach aus dieser Idee eine gute Informationsquelle für den Fortschritt der Bekämpfung von COVID-19 entstehen kann. Ich freue mich über sinnvolle Issues / Pull Requests.
-
-Projektdaten Installieren (nodejs und npm vorrausgesetzt)
-```
+#### Projektdaten Installieren (nodejs und npm vorrausgesetzt)
+```sh
 npm install
 ```
 
-Lokalen Webserver um die Änderungen zu checken
-```
+#### Lokalen Webserver um die Änderungen zu checken
+```sh
 npm run serve
 ```
+# 5. Zukunft:
+Durch Server-seitiges rendern (SSR) werden folgende Features Folgendes einfacher/möglich:
+
+* Markdown-artikel (siehe diesen Fork)
+* Caching
+* Dashboards (Mehr apis können verwendet werden, mit caching sogar diese mit maximal-request limit)
+* Fallbacks (Wer Kein JS hat kann optimierten, vorberechenten Content erhalten)
