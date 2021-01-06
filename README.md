@@ -24,7 +24,7 @@ Die Berechnung der Dauer bis theoretisch alle Menschen in Deutschland geimpft si
 
 ```
 Quote = Geimpfte Personen / Gesamteinwohner
-VerbleibendeTage = (TageSeitImpfbeginn / Quote * 100) * ((100 - Quote) / 100)
+VerbleibendeTage = (TageImpfbeginnBisLetztesUpdate / Quote * 100) - TageSeitImpfbeginn
 ``` 
 
 ## Mithelfen

@@ -36,9 +36,9 @@ export default {
       let impfStart = new Date("2020-12-27T00:00:00")
       let lastUpdateDate = new Date(data.data.lastUpdate)
       let diffDays = Math.round((lastUpdateDate.getTime() - impfStart.getTime()) / (1000*3600*24))
+      let daysSinceStart = Math.round(Date.now() - impfStart.getTime() / (1000*3600*24))
       let quote = data.data.quote
-      let quoteRemaining = (100-quote) / 100;
-      let daysRemaining = Math.round((diffDays / quote * 100) * quoteRemaining)
+      let daysRemaining = Math.round((diffDays / quote * 100) - daysSinceStart)
       this.yearsRemaining = Math.floor(daysRemaining/365)
       this.daysRemaining = daysRemaining - (this.yearsRemaining*365)
     })
