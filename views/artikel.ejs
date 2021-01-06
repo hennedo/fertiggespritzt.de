@@ -1,0 +1,27 @@
+<%#Artikel template%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="http://localhost:3000/favicon.ico">
+    <title><%=meta.title%></title>
+    <link rel="stylesheet" href="/css/header.css">
+    <%# CSS ausgelagert in externe datei (effizienteres caching)%>
+    <link rel="stylesheet" href="/css/artikel.css">
+  </head>
+  <body>
+    <%# Header include aus /partials/header mit daten aus der artikel-graymatter%>
+    <%- include('partials/header',{
+      title:meta.title,
+      subtitle:meta.subtitle,
+      darken:meta.darken,
+      image:meta.image,
+      background_position:meta.background_position
+    })%>
+    <main class="content">
+      <%- html%>
+    </main>
+  </body>
+</html>

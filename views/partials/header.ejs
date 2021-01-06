@@ -1,0 +1,9 @@
+<%var title,subtitle,image,darken,background_position%>
+<header style="background-image:url('<%=image?image:'/bin/boat.jpg'%>');<%=background_position?('background-position:'+background_position):''%>">
+  <div class="darken" <%if(darken){%>style="opacity:<%=darken%>"<%}%>></div>
+  <div class="hc">
+    <!--<img id="logo" src="web-design-in-4-minutes.png" alt="Web Design in 4 minutes logo">-->
+    <h1><%-title%></h1>
+    <%if(subtitle){%><h5 class="header__subtitle"><%=subtitle%></h5><%}%>
+  </div>
+</header>

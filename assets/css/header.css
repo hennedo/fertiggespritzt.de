@@ -1,0 +1,76 @@
+/* Header styles */
+header {
+  background-color: #263d36;
+  background-image: url("/bin/mountains.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  line-height: 1.2;
+  padding: 15em 2em;
+  text-align: center;
+  position: relative;
+}
+header .darken{
+  position: absolute;
+  top:0;
+  left:0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  background-image: linear-gradient(120deg, var(--headerc), #00000000);
+  filter:brightness(50%);
+  transition: 1s;
+  opacity: 0.5;
+}
+header img {
+  display: inline-block;
+  height: 120px;
+  vertical-align: top;
+  width: 120px;
+}
+
+header h1 {
+  color: white;
+  font-size: 2.5em;
+  font-weight: 300;
+}
+
+/*header a {
+  border: 1px solid var(--btnc);
+  border-radius: 290486px;
+  color: white;
+  font-size: 0.6em;
+  letter-spacing: 0.2em;
+  padding: 1em 2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: none 200ms ease-out;
+  transition-property: color, background;
+}*/
+
+
+header *{
+  z-index: 2;
+}
+
+header .hc{
+  padding: 10em 2em;
+  position: absolute;
+  top:0;
+  left:0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.button_box{
+  margin-top: 0.2em;
+  display: flex;
+  justify-content: center;
+  gap:1em;
+}
+
+header .header__subtitle{
+  color:#f2f2f2;
+  margin: 0.1em 0 1em 0;
+}

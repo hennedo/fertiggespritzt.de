@@ -1,0 +1,35 @@
+<%#EJS Template für Index, zsammenkopiert aus /src/App.vue und /public/index.html%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="http://localhost:3000/favicon.ico">
+    <title>Wie lange bis alle geimpft sind?</title>
+
+    <%# CSS ausgelagert in externe datei (effizienteres caching)%>
+    <link rel="stylesheet" href="/css/index_css.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="background">
+      </div>
+      <div class="container">
+        <div class="data">
+          Es dauert bei aktueller Geschwindigkeit noch*<br />
+          <%#Anstelle von Vue template hier EJS template expressions%>
+          <b><span if="yearsRemaining"><%=yearsRemaining%> Jahre und </span><%=daysRemaining%> Tage</b><br />
+          bis alle Menschen in Deutschland gegen COVID-19 geimpft sind.
+        </div>
+        <footer>
+          *: Bei gleicher Anzahl verabreichter Dosen pro Tag, wobei zu erwarten ist, dass es mehr werden.<br />
+          Das RKI gibt an "Anmerkung zu den Indikationen: Es können mehrere Indikationen je geimpfter Person vorliegen."<br />
+          Jede Person muss zweimal geimpft werden um den vollständigen Schutz zu haben. Ich kann leider derzeit noch nicht aus der Datenquelle erfahren, ob die zweite Dosis die Anzahl der geimpften Personen erhöht. Details zu meiner Berechnung sind auf <a href="https://www.github.com/hennedo/fertiggespritzt.de">Github</a> zu finden
+          Quelle: <a href="https://rki-vaccination-data.vercel.app/" target="_blank">https://rki-vaccination-data.vercel.app/</a> auf Basis der Daten vom RKI<br/>
+          Der Quellcode ist auf <a href="https://www.github.com/hennedo/fertiggespritzt.de">Github</a> zu finden
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
