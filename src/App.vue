@@ -3,7 +3,7 @@
     <main id="main">
       <h1 class="data">
         Es dauert bei aktueller Geschwindigkeit noch*<br />
-        <strong><span if="yearsRemaining">{{yearsRemaining}} Jahre und </span>{{daysRemaining}} Tage</strong><br />
+        <strong><span v-if="yearsRemaining">{{yearsRemaining}} Jahre und </span>{{daysRemaining}} Tage</strong><br />
         bis alle Menschen in Deutschland gegen COVID-19 geimpft sind.
       </h1>
     </main>
