@@ -4,7 +4,9 @@
       <h1 class="data">
         Es dauert bei aktueller Geschwindigkeit noch*<br />
         <strong><span v-if="yearsRemaining">{{yearsRemaining}} Jahre und </span>{{daysRemaining}} Tage</strong><br />
-        bis alle Menschen in Deutschland gegen COVID-19 geimpft sind.
+        bis alle Menschen in Deutschland gegen COVID-19 geimpft sind.<br />
+        <br />
+        <small>Fertiggespritzt am {{ finishDate }}</small>
       </h1>
     </main>
     <aside class="footer">
@@ -41,6 +43,10 @@ export default {
       let daysRemaining = Math.round((diffDays / quote * 100) - daysSinceStart)
       this.yearsRemaining = Math.floor(daysRemaining/365)
       this.daysRemaining = daysRemaining - (this.yearsRemaining*365)
+
+      let finishDate = new Date()
+      finishDate.setDate(finishDate.getDate() + daysRemaining)
+      this.finishDate = `${finishDate.getDay()}.${finishDate.getMonth()}.${finishDate.getFullYear()}`
     })
   }
 }
