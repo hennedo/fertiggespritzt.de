@@ -46,7 +46,7 @@ export default {
 
       let finishDate = new Date()
       finishDate.setDate(finishDate.getDate() + daysRemaining)
-      this.finishDate = `${finishDate.getDay()}.${finishDate.getMonth()}.${finishDate.getFullYear()}`
+      this.finishDate = `${finishDate.getDate()}.${finishDate.getMonth()+1}.${finishDate.getFullYear()}`
     })
   }
 }
