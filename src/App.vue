@@ -34,12 +34,13 @@ export default {
     }
   },
   mounted() {
-    axios.get("https://rki-vaccination-data.vercel.app/api").then(data => {
+    axios.get("https://rki-vaccination-data.vercel.app/api/v2").then(data => {
       let impfStart = new Date("2020-12-27T00:00:00")
       let lastUpdateDate = new Date(data.data.lastUpdate)
       let diffDays = Math.round((lastUpdateDate.getTime() - impfStart.getTime()) / (1000*3600*24))
       let daysSinceStart = Math.round((Date.now() - impfStart.getTime()) / (1000*3600*24))
-      let quote = data.data.quote;
+      let countryData = data.data.data.find(e => e.name == 'Deutschland');
+      let quote = countryData.vaccinatedAtLeastOnce.quote;
       let daysRemaining = Math.round((diffDays / quote * 100) - daysSinceStart)
       this.yearsRemaining = Math.floor(daysRemaining/365)
       this.daysRemaining = daysRemaining - (this.yearsRemaining*365)
